@@ -7,7 +7,7 @@
 //! - refactor the code: maybe the line as a struct? 
 
 use std::fs::File;
-use std::io::{Write, BufReader, BufRead, Error};
+use std::io::{Write, BufWriter, BufReader, BufRead, Error};
 
 fn main() -> Result<(), Error> {
 
@@ -17,7 +17,8 @@ fn main() -> Result<(), Error> {
     let input = File::open(read_path)?;
     let buffered = BufReader::new(input);
     
-    let mut output = File::create(write_path).unwrap();
+    let output = File::create(write_path).unwrap();
+    let mut buffered_output = BufWriter::new(output);
 
     let sep = ','.to_string();
     let end = '\n'.to_string();
@@ -44,7 +45,7 @@ fn main() -> Result<(), Error> {
         let new_string = line_idx.to_string() + &sep + name + &sep + &previous.to_string() 
                         + &sep + &current.to_string() + &sep + state + &end;
 
-        write!(output, "{}", new_string).unwrap();
+        write!(buffered_output, "{}", new_string).unwrap();
 
     }
     
