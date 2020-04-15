@@ -1,5 +1,4 @@
-# simple data parser WORK IN PROGRESS
-
+# simple data parser 
 ## A simple parser to solve a real world question.
 
 Imagine you have a network of franchise operators, each of them with a number of sales points.
@@ -28,27 +27,9 @@ e.g. _dataparser data.csv processed.csv_
 * some more refactoring?
 
 
-
-# PROBLEM: IT'S REALLY SLOW!
-
 Time measured with Linux time command:
 
-## 1 million lines
-
-#### Python3 script:
-
-* real    0m2,119s
-* user    0m1,749s
-* sys     0m0,076s
-
-#### Rust:
-
-* real    0m27,402s
-* user    0m1,574s
-* sys     0m9,064s
-
-
-## 10 million lines
+## 10_000_000 lines
 
 #### Python3 script:
 
@@ -58,8 +39,21 @@ Time measured with Linux time command:
 
 #### Rust:
 
-* real    0m20,031s
-* user    0m15,954s
-* sys     0m1,037s
+* real    0m8,965s
+* user    0m6,036s
+* sys     0m0,505s
+
+##  100_000_000 (Rust only)
+
+* real    2m9,148s
+* user    1m1,503s
+* sys     0m5,429s
+
+## 1_000_000_000 (Rust only)
+
+* real    24m50,813s
+* user    11m49,064s
+* sys     1m5,415s
+
 
 Included datagenerator.py script generates sythetic data files to test both parsers.
