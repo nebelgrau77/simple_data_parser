@@ -11,7 +11,7 @@ import string
 
 letters = string.ascii_uppercase
 
-header = 'idx,name,previous,current'
+header = 'idx,name,previous,current\n'
 
 sep = ','
 
