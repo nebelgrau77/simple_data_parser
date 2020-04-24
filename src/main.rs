@@ -21,7 +21,7 @@ fn main() -> Result<(), Error> {
     let mut buffered_output = BufWriter::new(output);
 
     let sep = ','.to_string();
-    let end = '\n'.to_string();
+    //let end = '\n'.to_string();
 
     for (idx, line) in buffered.lines().enumerate() {
                 
@@ -42,8 +42,10 @@ fn main() -> Result<(), Error> {
         };
 
 
-        let new_string = line_idx.to_string() + &sep + name + &sep + &previous.to_string() 
-                        + &sep + &current.to_string() + &sep + state + &end;
+        //let new_string = line_idx.to_string() + &sep + name + &sep + &previous.to_string() 
+        //                + &sep + &current.to_string() + &sep + state + &end;
+
+        let new_string = format!("{},{},{},{},{}\n",line_idx, name, &previous, &current, state);
 
         write!(buffered_output, "{}", new_string).unwrap();
 
@@ -74,7 +76,7 @@ fn status(previous: i8, current: i8) -> &'static str {
         }
     };
 
-    return state;
+    state
 
 }
 

@@ -26,10 +26,13 @@ e.g. _dataparser data.csv processed.csv_
 * add a possibility to use different separators
 * some more refactoring?
 
+## Improvements:
+Replaced the messy string building with format! macro. 
 
-Time measured with Linux time command:
 
-## 10_000_000 lines
+## Time measured with Linux time command:
+
+### 10_000_000 lines
 
 #### Python3 script:
 
@@ -43,13 +46,13 @@ Time measured with Linux time command:
 * user    0m6,036s
 * sys     0m0,505s
 
-##  100_000_000 (Rust only)
+###  100_000_000 (Rust only)
 
 * real    2m9,148s
 * user    1m1,503s
 * sys     0m5,429s
 
-## 1_000_000_000 (Rust only)
+### 1_000_000_000 (Rust only)
 
 * real    24m50,813s
 * user    11m49,064s
