@@ -16,9 +16,11 @@ It's of course simple to implement in a spreadsheet such as MS Excel, but for a 
 
 ## Usage: 
 
-_dataparser input output_ 
+_dataparser input_ 
 
-e.g. _dataparser data.csv processed.csv_
+e.g. _dataparser data.csv_
+
+The output file will be saved as _processed\_inputfile_, e.g. _processed\_data.csv_.
 
 ## TO DO:
 
@@ -60,3 +62,4 @@ Replaced the messy string building with format! macro.
 
 
 Included datagenerator.py script generates sythetic data files to test both parsers.
+ 

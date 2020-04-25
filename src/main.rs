@@ -12,17 +12,16 @@ use std::io::{Write, BufWriter, BufReader, BufRead, Error};
 fn main() -> Result<(), Error> {
 
     let read_path = std::env::args().nth(1).unwrap();
-    let write_path = std::env::args().nth(2).unwrap();
+    let write_path = format!("processed_{}", &read_path);
 
     let input = File::open(read_path)?;
     let buffered = BufReader::new(input);
     
-    let output = File::create(write_path).unwrap();
+    let output = File::create(&write_path).unwrap();
     let mut buffered_output = BufWriter::new(output);
 
     let sep = ','.to_string();
-    //let end = '\n'.to_string();
-
+    
     for (idx, line) in buffered.lines().enumerate() {
                 
         let new_line = line?;
@@ -41,20 +40,17 @@ fn main() -> Result<(), Error> {
 
         };
 
-
-        //let new_string = line_idx.to_string() + &sep + name + &sep + &previous.to_string() 
-        //                + &sep + &current.to_string() + &sep + state + &end;
-
         let new_string = format!("{},{},{},{},{}\n",line_idx, name, &previous, &current, state);
 
         write!(buffered_output, "{}", new_string).unwrap();
 
     }
     
+    println!("All done. Your output file was saved as {}.", &write_path);
+
     Ok(())
     
 }
-
 
 fn status(previous: i8, current: i8) -> &'static str {
 
